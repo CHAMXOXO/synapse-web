@@ -54,6 +54,9 @@
       font-size: 16px;
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     /* ── NOISE ── */
@@ -117,7 +120,14 @@
       font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em;
     }
     .nav-logo img { width: 28px; height: 28px; object-fit: contain; }
-    .nav-logo span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-logo span, .footer-logo span { 
+      background: var(--grad) !important; 
+      -webkit-background-clip: text !important; 
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important; 
+      color: transparent !important; 
+      display: inline-block !important;
+    }
     .nav-pill {
       display: flex; align-items: center; gap: 6px;
       padding: 8px 20px; border-radius: 100px;
@@ -956,30 +966,25 @@
       </div>
 
       <div class="downloads-grid fade-up">
-        <!--
-          REPLACE href values with actual GitHub Release download URLs after CI builds.
-          Go to: github.com/YOUR_ORG/Synapse/releases/latest
-          Right-click each asset → Copy Link Address
-        -->
-        <a href="https://github.com/Synapse-Neural-Core/Synapse/releases/download/v1.2.3/Synapse-1.2.3.AppImage" class="dl-card" id="dl-linux-appimage">
+        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-1.2.3.AppImage" class="dl-card">
           <div class="dl-platform">Linux</div>
           <div class="dl-name">AppImage</div>
           <div class="dl-format">.AppImage · x86_64</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/Synapse-Neural-Core/Synapse/releases/download/v1.2.3/synapse_1.2.3_amd64.deb" class="dl-card" id="dl-linux-deb">
+        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/synapse_1.2.3_amd64.deb" class="dl-card">
           <div class="dl-platform">Linux</div>
           <div class="dl-name">Debian / Ubuntu</div>
           <div class="dl-format">.deb · x86_64</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/Synapse-Neural-Core/Synapse/releases/download/v1.2.3/Synapse-Setup-1.2.3.exe" class="dl-card" id="dl-windows">
+        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-Setup-1.2.3.exe" class="dl-card">
           <div class="dl-platform">Windows</div>
           <div class="dl-name">Installer</div>
           <div class="dl-format">.exe · NSIS</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/Synapse-Neural-Core/Synapse/releases/download/v1.2.3/Synapse-1.2.3-arm64.dmg" class="dl-card" id="dl-macos">
+        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-1.2.3-arm64.dmg" class="dl-card">
           <div class="dl-platform">macOS</div>
           <div class="dl-name">Disk Image</div>
           <div class="dl-format">.dmg · Apple Silicon</div>
@@ -989,7 +994,7 @@
 
       <p style="text-align:center; margin-top:24px; font-size:0.8rem; color:var(--muted);">
         All releases on
-        <a href="https://github.com/Synapse-Neural-Core/Synapse/releases" style="color:var(--teal); text-decoration:none;">GitHub Releases ↗</a>
+        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases" style="color:var(--teal); text-decoration:none;">GitHub Releases ↗</a>
         · Source available · Built with Electron + Python
       </p>
     </div>
@@ -1006,7 +1011,7 @@
     <div class="footer-right">
       <div class="footer-links">
         <a href="https://github.com/Synapse-Neural-Core/Synapse/releases">Releases</a>
-        <a href="/cdn-cgi/l/email-protection#493a302728393a2c2a20272d30092e24282025672a2624">Contact</a>
+        <a href="mailto:synapsecindy@gmail.com">Contact</a>
         <a href="#pricing">Pricing</a>
       </div>
       <div class="footer-copy">Built with 🧠 for students who mean it.</div>
@@ -1035,7 +1040,7 @@
         <div class="modal-preview">
           <div class="modal-preview-row">
             <span class="modal-preview-label">To:</span>
-            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f182889f9081829492989f9588b1969c90989ddf929e9c">[email&#160;protected]</a></span>
+            <span>synapsecindy@gmail.com</span>
           </div>
           <div class="modal-preview-row">
             <span class="modal-preview-label">Subject:</span>
@@ -1054,7 +1059,7 @@
           </button>
         </div>
         <div class="modal-note">
-          💡 If your email client doesn't open, email <a href="/cdn-cgi/l/email-protection#87f4fee9e6f7f4e2e4eee9e3fec7e0eae6eeeba9e4e8ea"><span class="__cf_email__" data-cfemail="087b716669787b6d6b61666c71486f65696164266b6765">[email&#160;protected]</span></a> directly with your chosen plan, name, and country.
+          💡 If your email client doesn't open, email <a href="mailto:synapsecindy@gmail.com">synapsecindy@gmail.com</a> directly with your chosen plan, name, and country.
         </div>
       </div>
     </div>
@@ -1069,6 +1074,7 @@
       let billing = 'monthly';
       let activeTier = '';
 
+      // Fix for Scroll Animations
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1079,12 +1085,13 @@
 
       document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-      window.toggleLocation = function() {
-        isKenya = !isKenya;
+      // Fix for Pricing Toggle
+      function updateDisplay() {
         const toggle = document.getElementById('loc-toggle');
+        const knob = toggle.querySelector('.toggle-knob');
         const lblKenya = document.getElementById('lbl-kenya');
         const lblGlobal = document.getElementById('lbl-global');
-        const knob = toggle.querySelector('.toggle-knob');
+        
         if (isKenya) {
           lblKenya.classList.replace('inactive', 'active');
           lblGlobal.classList.replace('active', 'inactive');
@@ -1094,9 +1101,21 @@
           lblGlobal.classList.replace('inactive', 'active');
           knob.classList.replace('kenya', 'global');
         }
-        updateSaveBadge();
-      };
 
+        // Hide all prices, then show current ones
+        document.querySelectorAll('.pricing-amount').forEach(el => el.style.display = 'none');
+        const loc = isKenya ? '.price-kenya' : '.price-global';
+        const cyc = billing === 'monthly' ? '.monthly-note' : '.yearly-note';
+        document.querySelectorAll(`${loc}${cyc}`).forEach(el => el.style.display = 'block');
+
+        // Update badges and periods
+        document.querySelectorAll('.save-badge.save-kenya').forEach(el => el.style.display = isKenya ? '' : 'none');
+        document.querySelectorAll('.save-badge.save-global').forEach(el => el.style.display = isKenya ? 'none' : '');
+        document.querySelectorAll('.pricing-period .monthly-note').forEach(el => el.style.display = (billing === 'monthly' ? 'inline' : 'none'));
+        document.querySelectorAll('.pricing-period .yearly-note').forEach(el => el.style.display = (billing === 'yearly' ? 'inline' : 'none'));
+      }
+
+      window.toggleLocation = function() { isKenya = !isKenya; updateDisplay(); };
       window.setBilling = function(cycle) {
         billing = cycle;
         const btnM = document.getElementById('btn-monthly');
@@ -1104,20 +1123,12 @@
         if (cycle === 'monthly') {
           btnM.classList.replace('inactive', 'active');
           btnY.classList.replace('active', 'inactive');
-          document.querySelectorAll('.monthly-note').forEach(el => el.style.display = '');
-          document.querySelectorAll('.yearly-note').forEach(el => el.style.display = 'none');
         } else {
           btnM.classList.replace('active', 'inactive');
           btnY.classList.replace('inactive', 'active');
-          document.querySelectorAll('.monthly-note').forEach(el => el.style.display = 'none');
-          document.querySelectorAll('.yearly-note').forEach(el => el.style.display = '');
         }
+        updateDisplay();
       };
-
-      function updateSaveBadge() {
-        document.querySelectorAll('.save-badge.save-kenya').forEach(el => el.style.display = isKenya ? '' : 'none');
-        document.querySelectorAll('.save-badge.save-global').forEach(el => el.style.display = isKenya ? 'none' : '');
-      }
 
       window.openModal = function(tier) {
         activeTier = tier;
@@ -1132,9 +1143,7 @@
         document.body.style.overflow = '';
       };
 
-      window.handleOverlayClick = function(e) {
-        if (e.target === document.getElementById('contact-modal')) closeModal();
-      };
+      window.handleOverlayClick = function(e) { if (e.target === document.getElementById('contact-modal')) closeModal(); };
 
       window.copyEmail = function() {
         navigator.clipboard.writeText('synapsecindy@gmail.com').then(() => {
@@ -1150,7 +1159,8 @@
         window.location.href = `mailto:synapsecindy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       };
 
-      document.getElementById('loc-toggle').innerHTML = `<div class="toggle-knob kenya"></div>`;
+      document.getElementById('loc-toggle').innerHTML = '<div class="toggle-knob knob kenya"></div>';
+      updateDisplay(); // Run once at start
       document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
     });
   </script>
