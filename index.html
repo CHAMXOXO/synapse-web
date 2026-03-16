@@ -93,8 +93,12 @@
 
     /* ── GRAD TEXT ── */
     .grad-text {
-      background: var(--grad); -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent; background-clip: text;
+      background: var(--grad) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      display: inline-block;
     }
 
     /* ── NAV ── */
@@ -517,8 +521,16 @@
     .modal-note a { color: var(--teal); text-decoration: none; }
 
     /* ── SCROLL ANIMATIONS ── */
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up { 
+      opacity: 0; 
+      transform: translateY(24px); 
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+      will-change: opacity, transform;
+    }
+    .fade-up.visible { 
+      opacity: 1 !important; 
+      transform: translateY(0) !important; 
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -1051,128 +1063,96 @@
   <!-- ═══════════════════════════════════════════════════════════
        JAVASCRIPT
   ═══════════════════════════════════════════════════════════ -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // ── STATE ──
-    let isKenya = true;
-    let billing = 'monthly';
-    let activeTier = '';
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let isKenya = true;
+      let billing = 'monthly';
+      let activeTier = '';
 
-    // ── LOCATION TOGGLE ──
-    function toggleLocation() {
-      isKenya = !isKenya;
-      const toggle = document.getElementById('loc-toggle');
-      const lblKenya = document.getElementById('lbl-kenya');
-      const lblGlobal = document.getElementById('lbl-global');
-      const knob = toggle.querySelector('.toggle-knob') || toggle;
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.05 });
 
-      if (isKenya) {
-        document.body.classList.remove('global');
-        toggle.classList.remove('global');
-        lblKenya.classList.replace('inactive', 'active');
-        lblGlobal.classList.replace('active', 'inactive');
-      } else {
-        document.body.classList.add('global');
-        toggle.classList.add('global');
-        lblKenya.classList.replace('active', 'inactive');
-        lblGlobal.classList.replace('inactive', 'active');
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+      window.toggleLocation = function() {
+        isKenya = !isKenya;
+        const toggle = document.getElementById('loc-toggle');
+        const lblKenya = document.getElementById('lbl-kenya');
+        const lblGlobal = document.getElementById('lbl-global');
+        const knob = toggle.querySelector('.toggle-knob');
+        if (isKenya) {
+          lblKenya.classList.replace('inactive', 'active');
+          lblGlobal.classList.replace('active', 'inactive');
+          knob.classList.replace('global', 'kenya');
+        } else {
+          lblKenya.classList.replace('active', 'inactive');
+          lblGlobal.classList.replace('inactive', 'active');
+          knob.classList.replace('kenya', 'global');
+        }
+        updateSaveBadge();
+      };
+
+      window.setBilling = function(cycle) {
+        billing = cycle;
+        const btnM = document.getElementById('btn-monthly');
+        const btnY = document.getElementById('btn-yearly');
+        if (cycle === 'monthly') {
+          btnM.classList.replace('inactive', 'active');
+          btnY.classList.replace('active', 'inactive');
+          document.querySelectorAll('.monthly-note').forEach(el => el.style.display = '');
+          document.querySelectorAll('.yearly-note').forEach(el => el.style.display = 'none');
+        } else {
+          btnM.classList.replace('active', 'inactive');
+          btnY.classList.replace('inactive', 'active');
+          document.querySelectorAll('.monthly-note').forEach(el => el.style.display = 'none');
+          document.querySelectorAll('.yearly-note').forEach(el => el.style.display = '');
+        }
+      };
+
+      function updateSaveBadge() {
+        document.querySelectorAll('.save-badge.save-kenya').forEach(el => el.style.display = isKenya ? '' : 'none');
+        document.querySelectorAll('.save-badge.save-global').forEach(el => el.style.display = isKenya ? 'none' : '');
       }
-      updateSaveBadge();
-    }
 
-    // ── BILLING TOGGLE ──
-    function setBilling(cycle) {
-      billing = cycle;
-      const btnM = document.getElementById('btn-monthly');
-      const btnY = document.getElementById('btn-yearly');
+      window.openModal = function(tier) {
+        activeTier = tier;
+        document.getElementById('modal-title').textContent = `Get ${tier} Access`;
+        document.getElementById('modal-preview-subject').textContent = `Synapse ${tier} — Access Request`;
+        document.getElementById('contact-modal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      };
 
-      if (cycle === 'monthly') {
-        document.body.classList.remove('yearly');
-        btnM.classList.replace('inactive', 'active');
-        btnY.classList.replace('active', 'inactive');
-        // Show monthly prices
-        document.querySelectorAll('.monthly-note').forEach(el => el.style.display = '');
-        document.querySelectorAll('.yearly-note').forEach(el => el.style.display = 'none');
-      } else {
-        document.body.classList.add('yearly');
-        btnM.classList.replace('active', 'inactive');
-        btnY.classList.replace('inactive', 'active');
-        // Show yearly prices
-        document.querySelectorAll('.monthly-note').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.yearly-note').forEach(el => el.style.display = '');
-      }
-    }
+      window.closeModal = function() {
+        document.getElementById('contact-modal').classList.remove('open');
+        document.body.style.overflow = '';
+      };
 
-    function updateSaveBadge() {
-      document.querySelectorAll('.save-badge.save-kenya').forEach(el => {
-        el.style.display = (!isKenya) ? 'none' : '';
-      });
-      document.querySelectorAll('.save-badge.save-global').forEach(el => {
-        el.style.display = isKenya ? 'none' : '';
-      });
-    }
+      window.handleOverlayClick = function(e) {
+        if (e.target === document.getElementById('contact-modal')) closeModal();
+      };
 
-    // Render toggle knob on load
-    (function initToggle() {
-      const toggle = document.getElementById('loc-toggle');
-      toggle.innerHTML = `<div class="toggle-knob kenya"></div>`;
-    })();
+      window.copyEmail = function() {
+        navigator.clipboard.writeText('synapsecindy@gmail.com').then(() => {
+          const btn = document.getElementById('modal-copy-btn');
+          btn.textContent = '✓';
+          setTimeout(() => { btn.textContent = '📋'; }, 2000);
+        });
+      };
 
-    // Intercept toggle to update knob
-    document.getElementById('loc-toggle').addEventListener('click', function() {
-      const knob = this.querySelector('.toggle-knob');
-      if (knob.classList.contains('kenya')) {
-        knob.classList.replace('kenya', 'global');
-      } else {
-        knob.classList.replace('global', 'kenya');
-      }
+      window.openEmailClient = function() {
+        const subject = `Synapse ${activeTier} — Access Request`;
+        const body = `Hi!\n\nI'd like to get access to Synapse ${activeTier}.\n\nName:\nCountry:\n\nThanks!`;
+        window.location.href = `mailto:synapsecindy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      };
+
+      document.getElementById('loc-toggle').innerHTML = `<div class="toggle-knob kenya"></div>`;
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
     });
-
-    // ── MODAL ──
-    function openModal(tier) {
-      activeTier = tier;
-      document.getElementById('modal-title').textContent = `Get ${tier} Access`;
-      document.getElementById('modal-preview-subject').textContent = `Synapse ${tier} — Access Request`;
-      document.getElementById('contact-modal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('modal-copy-btn').textContent = '📋';
-      document.getElementById('modal-copy-btn').classList.remove('copied');
-    }
-
-    function closeModal() {
-      document.getElementById('contact-modal').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    function handleOverlayClick(e) {
-      if (e.target === document.getElementById('contact-modal')) closeModal();
-    }
-
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-    function getMailtoLink() {
-      const subject = `Synapse ${activeTier} — Access Request`;
-      const body = `Hi!\n\nI'd like to get access to Synapse ${activeTier}.\n\nName:\nCountry:\nCurrent Email:\n\nThanks!`;
-      return `mailto:synapsecindy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    }
-
-    function openEmailClient() {
-      window.location.href = getMailtoLink();
-    }
-
-    function copyEmail() {
-      navigator.clipboard.writeText('synapsecindy@gmail.com').then(() => {
-        const btn = document.getElementById('modal-copy-btn');
-        btn.textContent = '✓';
-        btn.classList.add('copied');
-        setTimeout(() => {
-          btn.textContent = '📋';
-          btn.classList.remove('copied');
-        }, 2500);
-      });
-    }
-
-    // ── SCROLL ANIMATIONS ──
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add(
+  </script>
+</body>
+</html>
