@@ -439,13 +439,24 @@
       gap: 6px; padding: 24px 20px; border-radius: 18px;
       background: var(--glass); border: 1px solid var(--border);
       backdrop-filter: blur(12px); text-decoration: none;
-      transition: all 0.25s; cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;
+      position: relative; overflow: hidden;
     }
-    .dl-card:hover { background: var(--glass-hi); border-color: rgba(6,182,212,0.3); transform: translateY(-3px); box-shadow: var(--glow-t); }
-    .dl-platform { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); }
-    .dl-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
-    .dl-format { font-size: 0.75rem; color: var(--muted); font-family: 'DM Mono', monospace; }
-    .dl-arrow { font-size: 1.4rem; color: var(--teal); margin-top: 4px; }
+    .dl-card.teal   { --accent: var(--teal);   --acc-glow: var(--glow-t);  --acc-dim: var(--teal-dim); }
+    .dl-card.blue   { --accent: var(--blue);   --acc-glow: 0 0 30px rgba(59,130,246,0.3); --acc-dim: rgba(59,130,246,0.1); }
+    .dl-card.purple { --accent: var(--purple); --acc-glow: var(--glow-p);  --acc-dim: var(--purple-dim); }
+    .dl-card.pink   { --accent: var(--pink);   --acc-glow: var(--glow-pk); --acc-dim: var(--pink-dim); }
+    .dl-card:hover {
+      background: var(--acc-dim);
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: var(--acc-glow);
+    }
+    .dl-card .dl-platform { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); transition: all 0.3s; }
+    .dl-card .dl-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .dl-card .dl-format { font-size: 0.75rem; color: var(--muted); font-family: 'DM Mono', monospace; }
+    .dl-card .dl-arrow { font-size: 1.4rem; color: var(--accent); margin-top: 4px; transition: transform 0.3s; }
+    .dl-card:hover .dl-arrow { transform: translateY(3px); }
 
     /* ── FOOTER ── */
     footer {
@@ -966,25 +977,25 @@
       </div>
 
       <div class="downloads-grid fade-up">
-        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-1.2.3.AppImage" class="dl-card">
+        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-1.2.3.AppImage" class="dl-card teal">
           <div class="dl-platform">Linux</div>
           <div class="dl-name">AppImage</div>
           <div class="dl-format">.AppImage · x86_64</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/synapse_1.2.3_amd64.deb" class="dl-card">
+        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/synapse_1.2.3_amd64.deb" class="dl-card blue">
           <div class="dl-platform">Linux</div>
           <div class="dl-name">Debian / Ubuntu</div>
           <div class="dl-format">.deb · x86_64</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-Setup-1.2.3.exe" class="dl-card">
+        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-Setup-1.2.3.exe" class="dl-card purple">
           <div class="dl-platform">Windows</div>
           <div class="dl-name">Installer</div>
           <div class="dl-format">.exe · NSIS</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-1.2.3-arm64.dmg" class="dl-card">
+        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-1.2.3-arm64.dmg" class="dl-card pink">
           <div class="dl-platform">macOS</div>
           <div class="dl-name">Disk Image</div>
           <div class="dl-format">.dmg · Apple Silicon</div>
