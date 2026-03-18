@@ -104,6 +104,66 @@
       display: inline-block;
     }
 
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up { 
+      opacity: 0; 
+      transform: translateY(24px); 
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+      will-change: opacity, transform;
+    }
+    .fade-up.visible { 
+      opacity: 1 !important; 
+      transform: translateY(0) !important; 
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up { 
+      opacity: 0; 
+      transform: translateY(24px); 
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+      will-change: opacity, transform;
+    }
+    .fade-up.visible { 
+      opacity: 1 !important; 
+      transform: translateY(0) !important; 
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up { 
+      opacity: 0; 
+      transform: translateY(24px); 
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+      will-change: opacity, transform;
+    }
+    .fade-up.visible { 
+      opacity: 1 !important; 
+      transform: translateY(0) !important; 
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up { 
+      opacity: 0; 
+      transform: translateY(24px); 
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+      will-change: opacity, transform;
+    }
+    .fade-up.visible { 
+      opacity: 1 !important; 
+      transform: translateY(0) !important; 
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up { 
+      opacity: 0; 
+      transform: translateY(24px); 
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+      will-change: opacity, transform;
+    }
+    .fade-up.visible { 
+      opacity: 1 !important; 
+      transform: translateY(0) !important; 
+    }
+
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -977,25 +1037,25 @@
       </div>
 
       <div class="downloads-grid fade-up">
-        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-1.2.3.AppImage" class="dl-card teal">
+        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/Synapse-1.2.4.AppImage" class="dl-card teal">
           <div class="dl-platform">Linux</div>
           <div class="dl-name">AppImage</div>
           <div class="dl-format">.AppImage · x86_64</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/synapse_1.2.3_amd64.deb" class="dl-card blue">
+        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/synapse_1.2.4_amd64.deb" class="dl-card blue">
           <div class="dl-platform">Linux</div>
           <div class="dl-name">Debian / Ubuntu</div>
           <div class="dl-format">.deb · x86_64</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-Setup-1.2.3.exe" class="dl-card purple">
+        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/Synapse-Setup-1.2.4.exe" class="dl-card purple">
           <div class="dl-platform">Windows</div>
           <div class="dl-name">Installer</div>
           <div class="dl-format">.exe · NSIS</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases/download/v1.2.3/Synapse-1.2.3-arm64.dmg" class="dl-card pink">
+        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/Synapse-1.2.4-arm64.dmg" class="dl-card pink">
           <div class="dl-platform">macOS</div>
           <div class="dl-name">Disk Image</div>
           <div class="dl-format">.dmg · Apple Silicon</div>
@@ -1005,7 +1065,7 @@
 
       <p style="text-align:center; margin-top:24px; font-size:0.8rem; color:var(--muted);">
         All releases on
-        <a href="https://github.com/CHAMXOXO/Synapse-Distribution/releases" style="color:var(--teal); text-decoration:none;">GitHub Releases ↗</a>
+        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases" style="color:var(--teal); text-decoration:none;">GitHub Releases ↗</a>
         · Source available · Built with Electron + Python
       </p>
     </div>
@@ -1081,99 +1141,111 @@
   ═══════════════════════════════════════════════════════════ -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      let isKenya = true;
-      let billing = 'monthly';
-      let activeTier = '';
-
-      // Fix for Scroll Animations
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+        let isKenya = true;
+        let billing = 'monthly';
+        let activeTier = '';
+  
+        // 1. Initialize Intersection Observer for scroll animations
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.05 });
+  
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  
+        // 2. Pricing & Location Display Logic
+        function updateDisplay() {
+          const toggle = document.getElementById('loc-toggle');
+          const knob = toggle.querySelector('.toggle-knob');
+          const lblKenya = document.getElementById('lbl-kenya');
+          const lblGlobal = document.getElementById('lbl-global');
+          
+          if (isKenya) {
+            lblKenya.classList.replace('inactive', 'active');
+            lblGlobal.classList.replace('active', 'inactive');
+            knob.classList.replace('global', 'kenya');
+          } else {
+            lblKenya.classList.replace('active', 'inactive');
+            lblGlobal.classList.replace('inactive', 'active');
+            knob.classList.replace('kenya', 'global');
           }
-        });
-      }, { threshold: 0.05 });
-
-      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-      // Fix for Pricing Toggle
-      function updateDisplay() {
-        const toggle = document.getElementById('loc-toggle');
-        const knob = toggle.querySelector('.toggle-knob');
-        const lblKenya = document.getElementById('lbl-kenya');
-        const lblGlobal = document.getElementById('lbl-global');
-        
-        if (isKenya) {
-          lblKenya.classList.replace('inactive', 'active');
-          lblGlobal.classList.replace('active', 'inactive');
-          knob.classList.replace('global', 'kenya');
-        } else {
-          lblKenya.classList.replace('active', 'inactive');
-          lblGlobal.classList.replace('inactive', 'active');
-          knob.classList.replace('kenya', 'global');
+  
+          // Handle Price Visibility
+          document.querySelectorAll('.pricing-amount').forEach(el => el.style.display = 'none');
+          const locClass = isKenya ? '.price-kenya' : '.price-global';
+          const cycleClass = billing === 'monthly' ? '.monthly-note' : '.yearly-note';
+          document.querySelectorAll(`${locClass}${cycleClass}`).forEach(el => el.style.display = 'block');
+  
+          // Update Badges & Subtitles
+          document.querySelectorAll('.save-badge.save-kenya').forEach(el => el.style.display = isKenya ? '' : 'none');
+          document.querySelectorAll('.save-badge.save-global').forEach(el => el.style.display = isKenya ? 'none' : '');
+          document.querySelectorAll('.pricing-period .monthly-note').forEach(el => el.style.display = (billing === 'monthly' ? 'inline' : 'none'));
+          document.querySelectorAll('.pricing-period .yearly-note').forEach(el => el.style.display = (billing === 'yearly' ? 'inline' : 'none'));
         }
-
-        // Hide all prices, then show current ones
-        document.querySelectorAll('.pricing-amount').forEach(el => el.style.display = 'none');
-        const loc = isKenya ? '.price-kenya' : '.price-global';
-        const cyc = billing === 'monthly' ? '.monthly-note' : '.yearly-note';
-        document.querySelectorAll(`${loc}${cyc}`).forEach(el => el.style.display = 'block');
-
-        // Update badges and periods
-        document.querySelectorAll('.save-badge.save-kenya').forEach(el => el.style.display = isKenya ? '' : 'none');
-        document.querySelectorAll('.save-badge.save-global').forEach(el => el.style.display = isKenya ? 'none' : '');
-        document.querySelectorAll('.pricing-period .monthly-note').forEach(el => el.style.display = (billing === 'monthly' ? 'inline' : 'none'));
-        document.querySelectorAll('.pricing-period .yearly-note').forEach(el => el.style.display = (billing === 'yearly' ? 'inline' : 'none'));
-      }
-
-      window.toggleLocation = function() { isKenya = !isKenya; updateDisplay(); };
-      window.setBilling = function(cycle) {
-        billing = cycle;
-        const btnM = document.getElementById('btn-monthly');
-        const btnY = document.getElementById('btn-yearly');
-        if (cycle === 'monthly') {
-          btnM.classList.replace('inactive', 'active');
-          btnY.classList.replace('active', 'inactive');
-        } else {
-          btnM.classList.replace('active', 'inactive');
-          btnY.classList.replace('inactive', 'active');
-        }
-        updateDisplay();
-      };
-
-      window.openModal = function(tier) {
-        activeTier = tier;
-        document.getElementById('modal-title').textContent = `Get ${tier} Access`;
-        document.getElementById('modal-preview-subject').textContent = `Synapse ${tier} — Access Request`;
-        document.getElementById('contact-modal').classList.add('open');
-        document.body.style.overflow = 'hidden';
-      };
-
-      window.closeModal = function() {
-        document.getElementById('contact-modal').classList.remove('open');
-        document.body.style.overflow = '';
-      };
-
-      window.handleOverlayClick = function(e) { if (e.target === document.getElementById('contact-modal')) closeModal(); };
-
-      window.copyEmail = function() {
-        navigator.clipboard.writeText('synapsecindy@gmail.com').then(() => {
-          const btn = document.getElementById('modal-copy-btn');
-          btn.textContent = '✓';
-          setTimeout(() => { btn.textContent = '📋'; }, 2000);
-        });
-      };
-
-      window.openEmailClient = function() {
-        const subject = `Synapse ${activeTier} — Access Request`;
-        const body = `Hi!\n\nI'd like to get access to Synapse ${activeTier}.\n\nName:\nCountry:\n\nThanks!`;
-        window.location.href = `mailto:synapsecindy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      };
-
-      document.getElementById('loc-toggle').innerHTML = '<div class="toggle-knob knob kenya"></div>';
-      updateDisplay(); // Run once at start
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-    });
+  
+        window.toggleLocation = function() { 
+          isKenya = !isKenya; 
+          updateDisplay(); 
+        };
+  
+        window.setBilling = function(cycle) {
+          billing = cycle;
+          const btnM = document.getElementById('btn-monthly');
+          const btnY = document.getElementById('btn-yearly');
+          if (cycle === 'monthly') {
+            btnM.classList.replace('inactive', 'active');
+            btnY.classList.replace('active', 'inactive');
+          } else {
+            btnM.classList.replace('active', 'inactive');
+            btnY.classList.replace('inactive', 'active');
+          }
+          updateDisplay();
+        };
+  
+        // 3. Modal Logic
+        window.openModal = function(tier) {
+          activeTier = tier;
+          document.getElementById('modal-title').textContent = `Get ${tier} Access`;
+          document.getElementById('modal-preview-subject').textContent = `Synapse ${tier} — Access Request`;
+          document.getElementById('contact-modal').classList.add('open');
+          document.body.style.overflow = 'hidden';
+        };
+  
+        window.closeModal = function() {
+          document.getElementById('contact-modal').classList.remove('open');
+          document.body.style.overflow = '';
+        };
+  
+        window.handleOverlayClick = function(e) { 
+          if (e.target === document.getElementById('contact-modal')) closeModal(); 
+        };
+  
+        window.copyEmail = function() {
+          navigator.clipboard.writeText('synapsecindy@gmail.com').then(() => {
+            const btn = document.getElementById('modal-copy-btn');
+            btn.textContent = '✓';
+            btn.classList.add('copied');
+            setTimeout(() => { 
+              btn.textContent = '📋'; 
+              btn.classList.remove('copied');
+            }, 2000);
+          });
+        };
+  
+        window.openEmailClient = function() {
+          const subject = `Synapse ${activeTier} — Access Request`;
+          const body = `Hi!\n\nI'd like to get access to Synapse ${activeTier}.\n\nName:\nCountry:\n\nThanks!`;
+          window.location.href = `mailto:synapsecindy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        };
+  
+        // 4. Initial Setup
+        document.getElementById('loc-toggle').innerHTML = '<div class="toggle-knob kenya"></div>';
+        updateDisplay(); 
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+      });
   </script>
 </body>
 </html>
