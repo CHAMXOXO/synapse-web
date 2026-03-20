@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-    <style>
+  <style>
     /* ============================================================
        SYNAPSE — NEURAL GLASSMORPHISM
        Dark. Frosted. Alive.
@@ -105,63 +105,15 @@
     }
 
     /* ── SCROLL ANIMATIONS ── */
-    .fade-up { 
-      opacity: 0; 
-      transform: translateY(24px); 
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
       will-change: opacity, transform;
     }
-    .fade-up.visible { 
-      opacity: 1 !important; 
-      transform: translateY(0) !important; 
-    }
-
-    /* ── SCROLL ANIMATIONS ── */
-    .fade-up { 
-      opacity: 0; 
-      transform: translateY(24px); 
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
-      will-change: opacity, transform;
-    }
-    .fade-up.visible { 
-      opacity: 1 !important; 
-      transform: translateY(0) !important; 
-    }
-
-    /* ── SCROLL ANIMATIONS ── */
-    .fade-up { 
-      opacity: 0; 
-      transform: translateY(24px); 
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
-      will-change: opacity, transform;
-    }
-    .fade-up.visible { 
-      opacity: 1 !important; 
-      transform: translateY(0) !important; 
-    }
-
-    /* ── SCROLL ANIMATIONS ── */
-    .fade-up { 
-      opacity: 0; 
-      transform: translateY(24px); 
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
-      will-change: opacity, transform;
-    }
-    .fade-up.visible { 
-      opacity: 1 !important; 
-      transform: translateY(0) !important; 
-    }
-
-    /* ── SCROLL ANIMATIONS ── */
-    .fade-up { 
-      opacity: 0; 
-      transform: translateY(24px); 
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
-      will-change: opacity, transform;
-    }
-    .fade-up.visible { 
-      opacity: 1 !important; 
-      transform: translateY(0) !important; 
+    .fade-up.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
 
     /* ── NAV ── */
@@ -180,12 +132,12 @@
       font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em;
     }
     .nav-logo img { width: 28px; height: 28px; object-fit: contain; }
-    .nav-logo span, .footer-logo span { 
-      background: var(--grad) !important; 
-      -webkit-background-clip: text !important; 
+    .nav-logo span, .footer-logo span {
+      background: var(--grad) !important;
+      -webkit-background-clip: text !important;
       background-clip: text !important;
-      -webkit-text-fill-color: transparent !important; 
-      color: transparent !important; 
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
       display: inline-block !important;
     }
     .nav-pill {
@@ -601,18 +553,6 @@
     .modal-note { font-size: 0.78rem; color: var(--muted); line-height: 1.6; text-align: center; }
     .modal-note a { color: var(--teal); text-decoration: none; }
 
-    /* ── SCROLL ANIMATIONS ── */
-    .fade-up { 
-      opacity: 0; 
-      transform: translateY(24px); 
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
-      will-change: opacity, transform;
-    }
-    .fade-up.visible { 
-      opacity: 1 !important; 
-      transform: translateY(0) !important; 
-    }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 0 16px; }
@@ -637,7 +577,6 @@
   ═══════════════════════════════════════════════════════════ -->
   <nav>
     <a href="#" class="nav-logo">
-      <!-- Replace src with your actual hosted icon URL once you have it -->
       <img src="icon.png" alt="Synapse" onerror="this.style.display='none'" />
       <span>Synapse</span>
     </a>
@@ -669,12 +608,8 @@
       </p>
 
       <div class="hero-cta">
-        <a href="#downloads" class="btn-primary">
-          ↓ Download Free
-        </a>
-        <a href="#pricing" class="btn-ghost">
-          View Pricing
-        </a>
+        <a href="#downloads" class="btn-primary">↓ Download Free</a>
+        <a href="#pricing" class="btn-ghost">View Pricing</a>
       </div>
 
       <p class="hero-note">Free to start · Works offline · No account needed</p>
@@ -730,7 +665,7 @@
 
         <div class="feat-card fade-up">
           <div class="feat-icon blue">🎨</div>
-          <h3>20+ Themes & Card Families</h3>
+          <h3>20+ Themes &amp; Card Families</h3>
           <p>Cosmic, Catppuccin, Ayu, Solarized, and more. Card theme families from light to premium. Even a custom hex colour theme so Synapse looks exactly how your brain wants it.</p>
           <span class="feat-tag purple">Ultimate: Custom Hex</span>
         </div>
@@ -757,60 +692,25 @@
       </div>
     </div>
 
-    <!-- Full-width scroll, intentionally bleeds container -->
     <div class="screenshots-scroll">
-      <!--
-        SCREENSHOTS: Replace these placeholders with real paths once you have them.
-        Recommended:
-        - AI Assistant view (generation happening)
-        - Library Dashboard (folder view, dark theme)
-        - Deck Browser (FSRS stats)
-        - Chat with PDF open
-        - Settings / theme picker (showing Cosmic or Catppuccin)
-        - Image Occlusion in action
-      -->
       <div class="screenshot-frame">
-        <div class="screenshot-placeholder">
-          <div class="ph-icon">🧠</div>
-          <p>AI Assistant — Generation</p>
-        </div>
-        <!-- <img src="screenshots/ai-assistant.png" alt="AI Assistant" /> -->
+        <div class="screenshot-placeholder"><div class="ph-icon">🧠</div><p>AI Assistant — Generation</p></div>
         <div class="screenshot-label">AI Generation</div>
       </div>
-
       <div class="screenshot-frame">
-        <div class="screenshot-placeholder">
-          <div class="ph-icon">📚</div>
-          <p>Library Dashboard</p>
-        </div>
-        <!-- <img src="screenshots/library.png" alt="Library Dashboard" /> -->
+        <div class="screenshot-placeholder"><div class="ph-icon">📚</div><p>Library Dashboard</p></div>
         <div class="screenshot-label">Library + Neural Ingest</div>
       </div>
-
       <div class="screenshot-frame">
-        <div class="screenshot-placeholder">
-          <div class="ph-icon">💬</div>
-          <p>Chat with Library</p>
-        </div>
-        <!-- <img src="screenshots/chat.png" alt="Chat" /> -->
+        <div class="screenshot-placeholder"><div class="ph-icon">💬</div><p>Chat with Library</p></div>
         <div class="screenshot-label">AI Chat</div>
       </div>
-
       <div class="screenshot-frame">
-        <div class="screenshot-placeholder">
-          <div class="ph-icon">⚡</div>
-          <p>Deck Browser — FSRS</p>
-        </div>
-        <!-- <img src="screenshots/deck-browser.png" alt="Deck Browser" /> -->
+        <div class="screenshot-placeholder"><div class="ph-icon">⚡</div><p>Deck Browser — FSRS</p></div>
         <div class="screenshot-label">Deck Browser + FSRS</div>
       </div>
-
       <div class="screenshot-frame">
-        <div class="screenshot-placeholder">
-          <div class="ph-icon">🎨</div>
-          <p>Theme Picker</p>
-        </div>
-        <!-- <img src="screenshots/themes.png" alt="Themes" /> -->
+        <div class="screenshot-placeholder"><div class="ph-icon">🎨</div><p>Theme Picker</p></div>
         <div class="screenshot-label">20+ Themes</div>
       </div>
     </div>
@@ -828,13 +728,11 @@
       </div>
 
       <div class="pricing-controls fade-up">
-        <!-- Location toggle -->
         <div class="toggle-wrap">
           <span class="toggle-label active" id="lbl-kenya">🇰🇪 Kenya (M-PESA)</span>
           <button class="toggle-switch" id="loc-toggle" onclick="toggleLocation()" aria-label="Switch pricing region"></button>
           <span class="toggle-label inactive" id="lbl-global">Global (USD)</span>
         </div>
-        <!-- Billing toggle -->
         <div class="billing-wrap">
           <button class="billing-btn active" id="btn-monthly" onclick="setBilling('monthly')">Monthly</button>
           <button class="billing-btn inactive" id="btn-yearly" onclick="setBilling('yearly')">
@@ -860,6 +758,10 @@
             <li class="pricing-feat">
               <span class="feat-check yes">✓</span>
               <span class="feat-text"><strong>Deck Browser + FSRS</strong><span class="feat-limit">Full study experience</span></span>
+            </li>
+            <li class="pricing-feat">
+              <span class="feat-check yes">✓</span>
+              <span class="feat-text">Study Plans<span class="feat-limit">Manual plans · progress &amp; mastery tracking</span></span>
             </li>
             <li class="pricing-feat">
               <span class="feat-check yes">✓</span>
@@ -902,7 +804,6 @@
           <div class="pricing-icon">⚡</div>
           <div class="pricing-name">Sync Pro</div>
           <div class="pricing-desc">The Sync Infrastructure</div>
-
           <div class="pricing-price-box">
             <div class="pricing-amount price-kenya monthly-note">KES 550</div>
             <div class="pricing-amount price-kenya yearly-note" style="display:none">KES 4,000</div>
@@ -913,11 +814,14 @@
               <span class="yearly-note" style="display:none">per year</span>
             </div>
           </div>
-
           <ul class="pricing-features">
             <li class="pricing-feat">
               <span class="feat-check yes">✓</span>
               <span class="feat-text"><strong>Bidirectional Sync</strong><span class="feat-limit">Joplin · Obsidian · Notion</span></span>
+            </li>
+            <li class="pricing-feat">
+              <span class="feat-check yes">✓</span>
+              <span class="feat-text">Study Plans<span class="feat-limit">Manual plans · progress &amp; mastery tracking</span></span>
             </li>
             <li class="pricing-feat">
               <span class="feat-check yes">✓</span>
@@ -952,7 +856,6 @@
               <span class="feat-text">Custom Hex Theme</span>
             </li>
           </ul>
-
           <button class="pricing-btn paid-btn" onclick="openModal('Sync Pro')">✉️ Get Access</button>
         </div>
 
@@ -962,7 +865,6 @@
           <div class="pricing-icon">👑</div>
           <div class="pricing-name">Ultimate</div>
           <div class="pricing-desc">The AI-Native Study OS</div>
-
           <div class="pricing-price-box">
             <div class="pricing-amount price-kenya monthly-note">KES 1,150</div>
             <div class="pricing-amount price-kenya yearly-note" style="display:none">KES 10,000</div>
@@ -973,7 +875,6 @@
               <span class="yearly-note" style="display:none">per year</span>
             </div>
           </div>
-
           <ul class="pricing-features">
             <li class="pricing-feat">
               <span class="feat-check yes">✓</span>
@@ -981,11 +882,15 @@
             </li>
             <li class="pricing-feat">
               <span class="feat-check yes">✓</span>
-              <span class="feat-text"><strong>1,000 Hosted AI Credits / month</strong></span>
+              <span class="feat-text"><strong>Study Plans</strong><span class="feat-limit">Manual now · AI-generated curriculum coming v1.2.0</span></span>
             </li>
             <li class="pricing-feat">
               <span class="feat-check yes">✓</span>
-              <span class="feat-text"><strong>BYOK Fallback</strong><span class="feat-limit">Auto-activates when credits hit 0</span></span>
+              <span class="feat-text"><strong>1,000 Hosted AI Credits / month</strong><span class="feat-limit">~500 flashcard generations or ~150 AI chats</span></span>
+            </li>
+            <li class="pricing-feat">
+              <span class="feat-check yes">✓</span>
+              <span class="feat-text"><strong>🔑 Bring Your Own Key (BYOK)</strong><span class="feat-limit">Unlimited generation on your Gemini / Groq key · credits included to get you started</span></span>
             </li>
             <li class="pricing-feat">
               <span class="feat-check yes">✓</span>
@@ -1012,7 +917,6 @@
               <span class="feat-text">Mind Map Generation ✨<span class="feat-limit">Coming Soon</span></span>
             </li>
           </ul>
-
           <button class="pricing-btn paid-btn" onclick="openModal('Ultimate')">✉️ Get Access</button>
         </div>
 
@@ -1037,25 +941,25 @@
       </div>
 
       <div class="downloads-grid fade-up">
-        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/Synapse-1.2.6.AppImage" class="dl-card teal">
+        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/Synapse.AppImage" class="dl-card teal">
           <div class="dl-platform">Linux</div>
           <div class="dl-name">AppImage</div>
           <div class="dl-format">.AppImage · x86_64</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/synapse_1.2.6_amd64.deb" class="dl-card blue">
+        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/synapse_amd64.deb" class="dl-card blue">
           <div class="dl-platform">Linux</div>
           <div class="dl-name">Debian / Ubuntu</div>
           <div class="dl-format">.deb · x86_64</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/Synapse-Setup-1.2.6.exe" class="dl-card purple">
+        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/Synapse-Setup.exe" class="dl-card purple">
           <div class="dl-platform">Windows</div>
           <div class="dl-name">Installer</div>
           <div class="dl-format">.exe · NSIS</div>
           <div class="dl-arrow">↓</div>
         </a>
-        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/Synapse-1.2.6-arm64.dmg" class="dl-card pink">
+        <a href="https://github.com/Synapse-Neural-Core/Synapse-Distribution/releases/latest/download/Synapse-arm64.dmg" class="dl-card pink">
           <div class="dl-platform">macOS</div>
           <div class="dl-name">Disk Image</div>
           <div class="dl-format">.dmg · Apple Silicon</div>
@@ -1106,7 +1010,7 @@
       </div>
       <div class="modal-body">
         <div class="modal-tip">
-          <strong>Quick & easy.</strong> Click "Open Email" and we'll pre-fill everything. Reply with your name and country, and you'll have your license key within 24 hours.
+          <strong>Quick &amp; easy.</strong> Click "Open Email" and we'll pre-fill everything. Reply with your name and country, and you'll have your license key within 24 hours.
         </div>
         <div class="modal-preview">
           <div class="modal-preview-row">
@@ -1144,25 +1048,20 @@
         let isKenya = true;
         let billing = 'monthly';
         let activeTier = '';
-  
-        // 1. Initialize Intersection Observer for scroll animations
+
         const observer = new IntersectionObserver(entries => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('visible');
           });
         }, { threshold: 0.05 });
-  
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  
-        // 2. Pricing & Location Display Logic
+
         function updateDisplay() {
           const toggle = document.getElementById('loc-toggle');
           const knob = toggle.querySelector('.toggle-knob');
           const lblKenya = document.getElementById('lbl-kenya');
           const lblGlobal = document.getElementById('lbl-global');
-          
+
           if (isKenya) {
             lblKenya.classList.replace('inactive', 'active');
             lblGlobal.classList.replace('active', 'inactive');
@@ -1172,25 +1071,20 @@
             lblGlobal.classList.replace('inactive', 'active');
             knob.classList.replace('kenya', 'global');
           }
-  
-          // Handle Price Visibility
+
           document.querySelectorAll('.pricing-amount').forEach(el => el.style.display = 'none');
           const locClass = isKenya ? '.price-kenya' : '.price-global';
           const cycleClass = billing === 'monthly' ? '.monthly-note' : '.yearly-note';
           document.querySelectorAll(`${locClass}${cycleClass}`).forEach(el => el.style.display = 'block');
-  
-          // Update Badges & Subtitles
+
           document.querySelectorAll('.save-badge.save-kenya').forEach(el => el.style.display = isKenya ? '' : 'none');
           document.querySelectorAll('.save-badge.save-global').forEach(el => el.style.display = isKenya ? 'none' : '');
           document.querySelectorAll('.pricing-period .monthly-note').forEach(el => el.style.display = (billing === 'monthly' ? 'inline' : 'none'));
           document.querySelectorAll('.pricing-period .yearly-note').forEach(el => el.style.display = (billing === 'yearly' ? 'inline' : 'none'));
         }
-  
-        window.toggleLocation = function() { 
-          isKenya = !isKenya; 
-          updateDisplay(); 
-        };
-  
+
+        window.toggleLocation = function() { isKenya = !isKenya; updateDisplay(); };
+
         window.setBilling = function(cycle) {
           billing = cycle;
           const btnM = document.getElementById('btn-monthly');
@@ -1204,8 +1098,7 @@
           }
           updateDisplay();
         };
-  
-        // 3. Modal Logic
+
         window.openModal = function(tier) {
           activeTier = tier;
           document.getElementById('modal-title').textContent = `Get ${tier} Access`;
@@ -1213,39 +1106,35 @@
           document.getElementById('contact-modal').classList.add('open');
           document.body.style.overflow = 'hidden';
         };
-  
+
         window.closeModal = function() {
           document.getElementById('contact-modal').classList.remove('open');
           document.body.style.overflow = '';
         };
-  
-        window.handleOverlayClick = function(e) { 
-          if (e.target === document.getElementById('contact-modal')) closeModal(); 
+
+        window.handleOverlayClick = function(e) {
+          if (e.target === document.getElementById('contact-modal')) closeModal();
         };
-  
+
         window.copyEmail = function() {
           navigator.clipboard.writeText('synapsecindy@gmail.com').then(() => {
             const btn = document.getElementById('modal-copy-btn');
             btn.textContent = '✓';
             btn.classList.add('copied');
-            setTimeout(() => { 
-              btn.textContent = '📋'; 
-              btn.classList.remove('copied');
-            }, 2000);
+            setTimeout(() => { btn.textContent = '📋'; btn.classList.remove('copied'); }, 2000);
           });
         };
-  
+
         window.openEmailClient = function() {
           const subject = `Synapse ${activeTier} — Access Request`;
           const body = `Hi!\n\nI'd like to get access to Synapse ${activeTier}.\n\nName:\nCountry:\n\nThanks!`;
           window.location.href = `mailto:synapsecindy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         };
-  
-        // 4. Initial Setup
+
         document.getElementById('loc-toggle').innerHTML = '<div class="toggle-knob kenya"></div>';
-        updateDisplay(); 
+        updateDisplay();
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-      });
+    });
   </script>
 </body>
 </html>
