@@ -36,7 +36,7 @@
     .nav-logo-icon img{width:48px;height:48px;object-fit:cover;border-radius:50%;position:relative;z-index:1}
     .nav-logo-icon::after{content:'';position:absolute;inset:-4px;background:radial-gradient(circle,rgba(6,182,212,.35) 0%,transparent 70%);border-radius:50%;animation:logo-pulse 3s ease-in-out infinite alternate}
     @keyframes logo-pulse{from{opacity:.5;transform:scale(.9)}to{opacity:1;transform:scale(1.1)}}
-    .nav-logo span,.footer-logo span{background:var(--grad)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important;display:inline-block!important}
+    .nav-logo span{background:var(--grad)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important;display:inline-block!important}
     .nav-pill{display:flex;align-items:center;gap:6px;padding:8px 20px;border-radius:100px;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.25);color:var(--teal);font-size:.875rem;font-weight:600;text-decoration:none;transition:all .2s}
     .nav-pill:hover{background:rgba(6,182,212,.18);border-color:rgba(6,182,212,.4);box-shadow:var(--glow-t)}
 
@@ -224,7 +224,7 @@
     footer{padding:40px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;border-top:1px solid var(--border);background:rgba(4,4,14,.6);backdrop-filter:blur(20px)}
     .footer-logo{display:flex;align-items:center;gap:10px}
     .footer-logo img{width:40px;height:40px;border-radius:50%}
-    .footer-logo span{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;display:inline-block}
+    .footer-logo span{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;display:inline-block;width:max-content}
     .footer-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
     .footer-links{display:flex;gap:20px}
     .footer-links a{font-size:.85rem;color:var(--muted);text-decoration:none;transition:color .2s}
