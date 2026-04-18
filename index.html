@@ -583,6 +583,7 @@
         document.getElementById('modal-title').textContent = `Get ${tier} Access`;
         document.getElementById('modal-preview-subject').textContent = `Synapse ${tier} — Access Request`;
         document.getElementById('contact-modal').classList.add('open');
+        window.currentTierId = tier === 'Ultimate' ? 'ultimate' : 'sync_pro';
         document.body.style.overflow = 'hidden';
       };
       window.closeModal = () => { document.getElementById('contact-modal').classList.remove('open'); document.body.style.overflow = ''; };
@@ -597,7 +598,38 @@
       window.openEmailClient = () => {
         const subject = `Synapse ${activeTier} — Access Request`;
         const body = `Hi!\n\nI'd like to get access to Synapse ${activeTier}.\n\nName:\nCountry:\n\nThanks!`;
-        window.location.href = `mailto:synapsecindy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        // Redirect to M-Pesa or PayPal based on plan selection
+        const SERVER = 'https://synapse-cloud.onrender.com';
+        const modalEmail = prompt('Enter your email to receive the license key:');
+        if (!modalEmail) return;
+        const isMpesa = confirm('🇰🇪 Pay with M-Pesa? (OK = M-Pesa, Cancel = PayPal)');
+        if (isMpesa) {
+          const phone = prompt('Enter your M-Pesa phone (e.g. 0712345678):');
+          if (!phone) return;
+          const btn = document.getElementById('modal-open-btn');
+          if (btn) { btn.textContent = '⏳ Sending STK Push...'; btn.disabled = true; }
+          fetch(`${SERVER}/payments/mpesa/initiate`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ phone, email: modalEmail, tier: currentTierId || 'sync_pro', billing: 'monthly' })
+          }).then(r => r.json()).then(d => {
+            if (d.checkout_request_id) {
+              alert('📲 STK Push sent! Enter your M-Pesa PIN on your phone.\n\nYour license key will be emailed to: ' + modalEmail);
+              closeModal();
+            } else { alert('❌ Error: ' + (d.detail || 'STK Push failed')); }
+          }).catch(() => alert('❌ Network error. Please try again.'))
+          .finally(() => { if (btn) { btn.textContent = '✉️ Get Access'; btn.disabled = false; } });
+        } else {
+          const btn = document.getElementById('modal-open-btn');
+          if (btn) { btn.textContent = '⏳ Creating PayPal order...'; btn.disabled = true; }
+          fetch(`${SERVER}/payments/paypal/create-order`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: modalEmail, tier: currentTierId || 'sync_pro', billing: 'monthly' })
+          }).then(r => r.json()).then(d => {
+            if (d.approval_url) { window.open(d.approval_url, '_blank'); closeModal(); }
+            else { alert('❌ PayPal error: ' + (d.detail || 'Unknown error')); }
+          }).catch(() => alert('❌ Network error. Please try again.'))
+          .finally(() => { if (btn) { btn.textContent = '✉️ Get Access'; btn.disabled = false; } });
+        }
       };
 
       window.switchTab = btn => {
